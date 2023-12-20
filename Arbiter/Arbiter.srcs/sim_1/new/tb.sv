@@ -49,6 +49,55 @@ initial begin
         reset=1;
     end
     #20
+  
+	$dumpfile("dump.vcd"); $dumpvars;
+    $finish();
+end
+
+sequence seq_1;
+  @(posedge clk) (grant==4'h8 && request==4'ha);
+  endsequence
+  
+  //calling assert property
+  a_1: assert property(seq_1);
+ 
+    anothergc_1: assert property(@(posedge clk) !(grant[0] && !(request[0])));
+      
+      
+endmodule
+      
+      
+      
+/*
+
+module tb();
+typedef enum logic [2:0] {NORMAL,FORCE0,FORCE1,FORCE2,FORCE3,ACCESS_OFF,ACCESS_ON,RESERVED} t_opcode;
+logic clk,reset,op_error;
+logic [7:0]data_in,data_out;
+logic [3:0]request,grant;
+logic [2:0]opcode;
+
+design_module #(8) dut(clk,reset,data_in,request,opcode,grant,data_out,op_error);
+
+always begin
+#5 clk=~clk;
+end
+
+initial begin
+    clk=0;
+    reset=1;
+    #10
+    repeat(40)
+    begin
+        #5
+        reset=0;
+        data_in=$random();
+        request=$random();
+        opcode=$random();
+        #20
+        reset=1;
+    end
+    #20
   	
 	$dumpvars;
   	$dumpfile("dump.vcd");
@@ -57,8 +106,13 @@ initial begin
 end
 
 
+  
+
 always @(posedge clk)
 begin
+
+// few features work only inside clocking blocks
+
 check_grant: assert property(!(grant[0]&&!request[0]))
   else $display($time," granted 0 without request");
 
@@ -67,8 +121,16 @@ check_opcode: assert property(opcode!=RESERVED)
 
 cover_all_at_once: cover property(request==4'hf);
   $display($time," all ports busy");
+
+  // sequence to check for the 
+sequence a;
+  request==4'a;
+  grant==4'h8;
+endsequence
   
 
 end
   
 endmodule
+  
+  */
