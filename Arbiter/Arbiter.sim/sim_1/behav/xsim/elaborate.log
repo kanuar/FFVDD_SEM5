@@ -1,0 +1,16 @@
+Vivado Simulator 2017.4
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: D:/Vivado/2017.4/bin/unwrapped/win64.o/xelab.exe -wto 2547877e927a461dbb53face7dd0c087 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_behav xil_defaultlib.tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+WARNING: [XSIM 43-4127] File "C:/Users/Admin/Desktop/github-files/FFVDD_SEM5/Arbiter/Arbiter.srcs/sim_1/new/tb.sv" Line 58 : The "System Verilog Assertion" is not supported yet for simulation. The statement will be ignored.
+WARNING: [XSIM 43-4127] File "C:/Users/Admin/Desktop/github-files/FFVDD_SEM5/Arbiter/Arbiter.srcs/sim_1/new/tb.sv" Line 61 : The "System Verilog Assertion" is not supported yet for simulation. The statement will be ignored.
+WARNING: [XSIM 43-4127] File "C:/Users/Admin/Desktop/github-files/FFVDD_SEM5/Arbiter/Arbiter.srcs/sim_1/new/tb.sv" Line 64 : The "System Verilog Assertion" is not supported yet for simulation. The statement will be ignored.
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.design_module(N=8)
+Compiling module xil_defaultlib.tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_behav
