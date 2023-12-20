@@ -45,11 +45,14 @@ initial begin
         data_in=$random();
         request=$random();
         opcode=$random();
-        
         #20
         reset=1;
     end
     #20
+  	
+	$dumpvars;
+  	$dumpfile("dump.vcd");
+  
     $finish();
 end
 
@@ -57,13 +60,15 @@ end
 always @(posedge clk)
 begin
 check_grant: assert property(!(grant[0]&&!request[0]))
-else $display($time," granted 0 without request");
+  else $display($time," granted 0 without request");
 
 check_opcode: assert property(opcode!=RESERVED)
-else $display($time," arbiter is reserved by another process");
+  else $display($time," arbiter is reserved by another process");
 
-cover_all_at_once: cover property(request===4'hf);
+cover_all_at_once: cover property(request==4'hf);
+  $display($time," all ports busy");
+  
 
 end
-
+  
 endmodule
